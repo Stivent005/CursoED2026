@@ -2,50 +2,66 @@
 #include "areas.h"
 #include "volumenes.h"
 
-int main(){
-    int opcion;
-    double x, y;
+int main() {
 
-    do{
-        printf("\n1. Calcular area de un circulo\n");
-        printf("2. Calcular area de un cuadrado\n");
-        printf("3. Calcular volumen de una esfera\n");
-        printf("4. Calcular volumen de un cubo\n");
-        printf("5. Salir\n");
+    int opcionMenu = 0;
+    double dato1, dato2;
 
-        scanf("%d", &opcion);
+    while(opcionMenu != 5){
 
-        switch(opcion){
+        printf("\n===== MENU DE CALCULOS =====\n");
+        printf("1) Area del circulo\n");
+        printf("2) Area del cuadrado\n");
+        printf("3) Volumen de la esfera\n");
+        printf("4) Volumen del cubo\n");
+        printf("5) Salir\n");
+        printf("Seleccione una opcion: ");
 
-            case 1:
-                printf("Escribe el radio: ");
-                scanf("%lf", &x);
-                printf("Area: %.2lf\n", AreaC(x));
-                break;
+        scanf("%d", &opcionMenu);
 
-            case 2:
-                printf("Escribe lado 1: ");
-                scanf("%lf", &x);
-                printf("Escribe lado 2: ");
-                scanf("%lf", &y);
-                printf("Area: %.2lf\n", AreaCu(x, y));
-                break;
+        if(opcionMenu == 1){
+            printf("Ingrese el radio del circulo: ");
+            scanf("%lf", &dato1);
 
-            case 3:
-                printf("Radio: ");
-                scanf("%lf", &x);
-                printf("Volumen: %.2lf\n", VolEsfera(x));
-                break;
-
-            case 4:
-                printf("Lado: ");
-                scanf("%lf", &x);
-                printf("Volumen: %.2lf\n", VolCubo(x));
-                break;
-
+            double resultado = AreaC(dato1);
+            printf("El area del circulo es: %.2lf\n", resultado);
         }
 
-    }while(opcion != 5);
+        else if(opcionMenu == 2){
+            printf("Ingrese el primer lado: ");
+            scanf("%lf", &dato1);
+
+            printf("Ingrese el segundo lado: ");
+            scanf("%lf", &dato2);
+
+            double resultado = AreaCu(dato1, dato2);
+            printf("El area del cuadrado es: %.2lf\n", resultado);
+        }
+
+        else if(opcionMenu == 3){
+            printf("Ingrese el radio de la esfera: ");
+            scanf("%lf", &dato1);
+
+            double resultado = VolEsfera(dato1);
+            printf("El volumen de la esfera es: %.2lf\n", resultado);
+        }
+
+        else if(opcionMenu == 4){
+            printf("Ingrese el lado del cubo: ");
+            scanf("%lf", &dato1);
+
+            double resultado = VolCubo(dato1);
+            printf("El volumen del cubo es: %.2lf\n", resultado);
+        }
+
+        else if(opcionMenu == 5){
+            printf("Programa finalizado.\n");
+        }
+
+        else{
+            printf("Opcion invalida. Intente nuevamente.\n");
+        }
+    }
 
     return 0;
 }
